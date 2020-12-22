@@ -1,2 +1,2 @@
-# java8-lambda-study
+# java8-study
 Jdk8 lambda guava
