@@ -58,7 +58,7 @@ public class LambdaDemo {
      * @return int
      */
     public Long getListNullCount(List<Integer> numberList) {
-        return (numberList != null && numberList.size() > 0) ? numberList.stream().filter(num -> num != null).count() : 0L;
+        return (numberList != null && numberList.size() > 0) ? numberList.stream().filter(num -> num == null).count() : 0L;
     }
 
     /*
@@ -70,9 +70,9 @@ public class LambdaDemo {
     }
 
     /*
-     *给定一个Integer类型的List，获取其对应的Stream对象，然后进行过滤掉null，再去重，
+     *给定一个Integer类型的List，获取其对应的Stream对象，然后进行过滤掉null，再去重（依赖对象的equals），
      * 再每个元素乘以2，再每个元素被消费的时候打印自身，再跳过前两个元素
-     * ，最后去前四个元素进行加和运算
+         * ，最后去前四个元素进行加和运算
      */
 
     public void commonCollection(List<Integer> numbers) {
@@ -126,7 +126,7 @@ public class LambdaDemo {
     }
 
     /*
-     *简单去重
+     *简单去重(依赖数据对象的equals方法)
      * @param []
      * @return void
      */
@@ -163,6 +163,11 @@ public class LambdaDemo {
         }));
     }
 
+    /*
+     *根据对象的某属性去重
+     * @param []
+     * @return void
+     */
     public void ObjectDistinctHandle() {
 //        approvalStageList.stream()
 //                .filter(ele -> ele.getBusinessKey() != null)

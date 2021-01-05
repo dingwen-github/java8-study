@@ -1,6 +1,7 @@
 package demo;
 
 import com.google.common.collect.Lists;
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import entity.Student;
 
 import java.util.List;
@@ -42,6 +43,14 @@ public class OptionalDemo {
     public void mapAndOrElse(Student student){
         System.out.println(Optional.ofNullable(student).map(stu -> stu.getName()).orElse("dingwen"));
 //        Optional.ofNullable(student).flatMap(u -> Optional.ofNullable(u.getName()));
+    }
+
+    public void mapAndOrElseThrow(Student student){
+        Optional.ofNullable(student).map(Student::getId).orElseThrow(() ->  new RuntimeException());
+    }
+
+    public void mapAndOrElseGet(Student student){
+        Optional.ofNullable(student).map(Student::getName).orElseGet(() ->"查无此人");
     }
 
 }
